@@ -2,6 +2,8 @@
  * Why isn't this a .c file?  Enquiring minds....
  */
 
+#define sys_clone sys_fork
+
 extern int sys_setup();
 extern int sys_exit();
 extern int sys_fork();
@@ -89,6 +91,39 @@ extern int sys_symlink();
 extern int sys_lstat();
 extern int sys_readlink();
 extern int sys_uselib();
+extern int sys_swapon();
+extern int sys_reboot();
+extern int sys_readdir();
+extern int sys_mmap();
+extern int sys_munmap();
+extern int sys_truncate();
+extern int sys_ftruncate();
+extern int sys_fchmod();
+extern int sys_fchown();
+extern int sys_getpriority();
+extern int sys_setpriority();
+extern int sys_profil();
+extern int sys_statfs();
+extern int sys_fstatfs();
+extern int sys_ioperm();
+extern int sys_socketcall();
+extern int sys_syslog();
+extern int sys_getitimer();
+extern int sys_setitimer();
+extern int sys_newstat();
+extern int sys_newlstat();
+extern int sys_newfstat();
+extern int sys_newuname();
+extern int sys_iopl();
+extern int sys_vhangup();
+extern int sys_idle();
+extern int sys_vm86();
+extern int sys_wait4();
+extern int sys_swapoff();
+extern int sys_sysinfo();
+extern int sys_ipc();
+extern int sys_fsync();
+extern int sys_sigreturn();
 
 fn_ptr sys_call_table[] = { sys_setup, sys_exit, sys_fork, sys_read,
 sys_write, sys_open, sys_close, sys_waitpid, sys_creat, sys_link,
@@ -102,10 +137,17 @@ sys_getgid, sys_signal, sys_geteuid, sys_getegid, sys_acct, sys_phys,
 sys_lock, sys_ioctl, sys_fcntl, sys_mpx, sys_setpgid, sys_ulimit,
 sys_uname, sys_umask, sys_chroot, sys_ustat, sys_dup2, sys_getppid,
 sys_getpgrp, sys_setsid, sys_sigaction, sys_sgetmask, sys_ssetmask,
-sys_setreuid,sys_setregid, sys_sigsuspend, sys_sigpending, sys_sethostname,
-sys_setrlimit, sys_getrlimit, sys_getrusage, sys_gettimeofday, 
-sys_settimeofday, sys_getgroups, sys_setgroups, sys_select, sys_symlink,
-sys_lstat, sys_readlink, sys_uselib };
+sys_setreuid,sys_setregid, sys_sigsuspend, sys_sigpending,
+sys_sethostname, sys_setrlimit, sys_getrlimit, sys_getrusage,
+sys_gettimeofday, sys_settimeofday, sys_getgroups, sys_setgroups,
+sys_select, sys_symlink, sys_lstat, sys_readlink, sys_uselib,
+sys_swapon, sys_reboot, sys_readdir, sys_mmap, sys_munmap, sys_truncate,
+sys_ftruncate, sys_fchmod, sys_fchown, sys_getpriority, sys_setpriority,
+sys_profil, sys_statfs, sys_fstatfs, sys_ioperm, sys_socketcall,
+sys_syslog, sys_setitimer, sys_getitimer, sys_newstat, sys_newlstat,
+sys_newfstat, sys_newuname, sys_iopl, sys_vhangup, sys_idle, sys_vm86,
+sys_wait4, sys_swapoff, sys_sysinfo, sys_ipc, sys_fsync, sys_sigreturn,
+sys_clone };
 
 /* So we don't have to do any more manual updating.... */
 int NR_syscalls = sizeof(sys_call_table)/sizeof(fn_ptr);
